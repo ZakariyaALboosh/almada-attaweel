@@ -13,22 +13,74 @@
       body {
         font-family: "Tajawal", "Cairo", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes floatSoft {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(15, 118, 110, 0.15);
+        }
+        50% {
+          box-shadow: 0 0 0 10px rgba(15, 118, 110, 0.05);
+        }
+      }
+
+      .animate-fade-up {
+        opacity: 0;
+        animation: fadeUp 0.8s ease-out forwards;
+      }
+
+      .delay-1 {
+        animation-delay: 0.15s;
+      }
+
+      .delay-2 {
+        animation-delay: 0.3s;
+      }
+
+      .delay-3 {
+        animation-delay: 0.45s;
+      }
+
+      .logo-float {
+        animation: floatSoft 3.6s ease-in-out infinite;
+      }
+
+      .pulse-card {
+        animation: pulseGlow 2.8s ease-in-out infinite;
+      }
     </style>
   </head>
   <body class="bg-slate-50 text-slate-800">
     <main class="min-h-screen">
       <section class="mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center px-4 py-12 sm:px-6 lg:px-8">
         <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200 sm:p-10">
-          <div class="mx-auto mb-8 w-full max-w-sm text-center">
-            <img
-              src="assets/logo.jpg"
-              class="mx-auto mb-4 h-auto w-full max-w-[260px]"
-              loading="lazy"
-            />
+          <div class="mx-auto mb-8 w-full max-w-sm text-center animate-fade-up">
+            <img src="assets/logo.jpg" class="logo-float mx-auto mb-4 h-auto w-full max-w-[260px]" loading="lazy" />
             <p class="text-sm text-slate-500">Almada Attaweel</p>
           </div>
 
-          <div class="text-center">
+          <div class="text-center animate-fade-up delay-1">
             <h1 class="text-3xl font-bold leading-tight text-teal-900 sm:text-4xl">
               شركة المدى الطويل لاستيراد السجاد والمنسوجات والعشب الصناعي
             </h1>
@@ -39,25 +91,31 @@
             </p>
           </div>
 
-
-          <div class="mt-8 text-center">
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-3 text-center animate-fade-up delay-2">
             <a
               href="contact.html"
-              class="inline-flex items-center justify-center rounded-xl bg-teal-700 px-6 py-3 text-base font-semibold text-white transition hover:bg-teal-800"
+              class="inline-flex items-center justify-center rounded-xl bg-teal-700 px-6 py-3 text-base font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-teal-800"
               >تواصل معنا</a
+            >
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center rounded-xl border border-blue-600 bg-blue-600 px-6 py-3 text-base font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-blue-700"
+              >تابعنا على فيسبوك</a
             >
           </div>
 
-          <div class="mt-10 grid gap-4 sm:grid-cols-3">
-            <article class="rounded-xl border border-slate-200 bg-slate-50 p-4 text-center">
+          <div class="mt-10 grid gap-4 sm:grid-cols-3 animate-fade-up delay-3">
+            <article class="pulse-card rounded-xl border border-slate-200 bg-slate-50 p-4 text-center transition duration-300 hover:-translate-y-1 hover:shadow-md">
               <h2 class="text-sm font-semibold text-slate-500">الموقع</h2>
               <p class="mt-2 font-medium text-slate-800">الزاوية الغرب (Western Zawia)</p>
             </article>
-            <article class="rounded-xl border border-slate-200 bg-slate-50 p-4 text-center">
+            <article class="pulse-card rounded-xl border border-slate-200 bg-slate-50 p-4 text-center transition duration-300 hover:-translate-y-1 hover:shadow-md">
               <h2 class="text-sm font-semibold text-slate-500">الهاتف</h2>
               <a href="tel:0912183506" class="mt-2 block font-medium text-teal-800 hover:underline">0912183506</a>
             </article>
-            <article class="rounded-xl border border-slate-200 bg-slate-50 p-4 text-center">
+            <article class="pulse-card rounded-xl border border-slate-200 bg-slate-50 p-4 text-center transition duration-300 hover:-translate-y-1 hover:shadow-md">
               <h2 class="text-sm font-semibold text-slate-500">البريد الإلكتروني</h2>
               <a href="mailto:info@almada-attaweel.ly" class="mt-2 block break-all font-medium text-teal-800 hover:underline"
                 >info@almada-attaweel.ly</a
