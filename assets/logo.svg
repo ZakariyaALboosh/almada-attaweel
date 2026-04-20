@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-labelledby="title desc">
+  <title id="title">شعار شركة المدى الطويل</title>
+  <desc id="desc">شعار نصي بديل لشركة المدى الطويل</desc>
+  <rect width="600" height="420" fill="#f8fafc"/>
+  <g fill="#0f4f52">
+    <path d="M110 235c-22 0-40-18-40-40s18-40 40-40h120v80H110z"/>
+    <path d="M225 160h210l-100-80-110 80z"/>
+    <rect x="310" y="135" width="48" height="48" rx="4"/>
+    <path d="M280 270h220v18H280z"/>
+    <path d="M215 270h70v18h-70z"/>
+  </g>
+  <text x="300" y="340" text-anchor="middle" font-size="44" font-family="Arial, sans-serif" fill="#0f4f52">شركة المدى الطويل</text>
+  <text x="300" y="385" text-anchor="middle" font-size="30" font-family="Arial, sans-serif" fill="#0f4f52">Almada Attaweel</text>
+</svg>
