@@ -14,25 +14,72 @@
         font-family: "Tajawal", "Cairo", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       }
 
-      .carousel-slide {
-        display: none;
+      @keyframes fade-up {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
-      .carousel-slide.active {
-        display: block;
+      @keyframes soft-zoom {
+        from {
+          transform: scale(1.04);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes pulse-glow {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(15, 118, 110, 0.22);
+        }
+        50% {
+          box-shadow: 0 0 0 10px rgba(15, 118, 110, 0);
+        }
+      }
+
+      .animate-fade-up {
+        opacity: 0;
+        animation: fade-up 0.8s ease forwards;
+      }
+
+      .animate-delay-1 {
+        animation-delay: 0.15s;
+      }
+
+      .animate-delay-2 {
+        animation-delay: 0.3s;
+      }
+
+      .animate-delay-3 {
+        animation-delay: 0.45s;
+      }
+
+      .hero-image {
+        animation: soft-zoom 14s ease-in-out infinite alternate;
+      }
+
+      .glow-card {
+        animation: pulse-glow 3.8s ease-in-out infinite;
       }
     </style>
   </head>
   <body class="bg-slate-50 text-slate-800">
     <main class="min-h-screen">
       <section class="mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center px-4 py-12 sm:px-6 lg:px-8">
-        <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200 sm:p-10">
-          <div class="mx-auto mb-8 w-full max-w-sm text-center">
+        <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200 sm:p-10 animate-fade-up">
+          <div class="mx-auto mb-8 w-full max-w-sm text-center animate-fade-up animate-delay-1">
             <img src="assets/logo.jpg" class="mx-auto mb-4 h-auto w-full max-w-[260px]" loading="lazy" />
             <p class="text-sm text-slate-500">Almada Attaweel</p>
           </div>
 
-          <div class="text-center">
+          <div class="text-center animate-fade-up animate-delay-2">
             <h1 class="text-3xl font-bold leading-tight text-teal-900 sm:text-4xl">
               شركة المدى الطويل لاستيراد السجاد والمنسوجات والعشب الصناعي
             </h1>
@@ -43,37 +90,21 @@
             </p>
           </div>
 
-          <div class="mt-10 overflow-hidden rounded-2xl border border-slate-200 bg-slate-100">
-            <div class="relative" id="image-carousel">
-              <!-- You can replace these images with your own images anytime -->
-              <div class="carousel-slide active">
-                <img src="assets/logo.jpg" alt="صورة من أعمال الشركة 1" class="h-[360px] w-full object-cover" loading="lazy" />
-              </div>
-              <div class="carousel-slide">
-                <img src="assets/logo.jpg" alt="صورة من أعمال الشركة 2" class="h-[360px] w-full object-cover" loading="lazy" />
-              </div>
-              <div class="carousel-slide">
-                <img src="assets/logo.jpg" alt="صورة من أعمال الشركة 3" class="h-[360px] w-full object-cover" loading="lazy" />
-              </div>
-
-              <button
-                type="button"
-                id="carousel-next"
-                class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 px-3 py-2 text-white transition hover:bg-black/60"
-                aria-label="الصورة التالية"
+          <div class="mt-10 overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 animate-fade-up animate-delay-3">
+            <figure class="relative aspect-[4/5] sm:aspect-[5/4]">
+              <img
+                src="assets/hero-figure.png"
+                alt="صورة من أعمال شركة المدى الطويل"
+                class="hero-image h-full w-full object-cover object-center"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='assets/logo.jpg';"
+              />
+              <figcaption
+                class="absolute bottom-4 right-4 rounded-xl bg-white/90 px-4 py-2 text-sm font-semibold text-teal-900 shadow-sm backdrop-blur"
               >
-                ❮
-              </button>
-              <button
-                type="button"
-                id="carousel-prev"
-                class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 px-3 py-2 text-white transition hover:bg-black/60"
-                aria-label="الصورة السابقة"
-              >
-                ❯
-              </button>
-            </div>
-            <div class="flex items-center justify-center gap-2 bg-white py-3" id="carousel-dots"></div>
+                جودة عالية • خدمة موثوقة • حلول متكاملة
+              </figcaption>
+            </figure>
           </div>
 
           <div class="mt-8 flex flex-wrap items-center justify-center gap-3 text-center">
@@ -91,89 +122,33 @@
             >
           </div>
 
-          <div class="mt-10 grid gap-4 sm:grid-cols-3">
-            <article class="rounded-xl border border-slate-200 bg-slate-50 p-4 text-center">
-              <h2 class="text-sm font-semibold text-slate-500">الموقع</h2>
-              <p class="mt-2 font-medium text-slate-800">الزاوية الغرب (Western Zawia)</p>
-            </article>
-            <article class="rounded-xl border border-slate-200 bg-slate-50 p-4 text-center">
-              <h2 class="text-sm font-semibold text-slate-500">الهاتف</h2>
-              <a href="tel:0912183506" class="mt-2 block font-medium text-teal-800 hover:underline">0912183506</a>
-            </article>
-            <article class="rounded-xl border border-slate-200 bg-slate-50 p-4 text-center">
-              <h2 class="text-sm font-semibold text-slate-500">البريد الإلكتروني</h2>
-              <a href="mailto:info@almada-attaweel.ly" class="mt-2 block break-all font-medium text-teal-800 hover:underline"
-                >info@almada-attaweel.ly</a
+          <div class="mt-12 border-t border-slate-200 pt-8">
+            <h2 class="text-center text-lg font-bold text-teal-900 animate-fade-up">معلومات التواصل</h2>
+            <div class="mt-5 grid gap-4 sm:grid-cols-3">
+              <article
+                class="glow-card rounded-2xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-5 text-center shadow-sm animate-fade-up"
               >
-            </article>
+                <h3 class="text-sm font-semibold text-slate-500">العنوان</h3>
+                <p class="mt-2 font-medium text-slate-800">الزاوية الغرب .</p>
+              </article>
+              <article
+                class="glow-card rounded-2xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-5 text-center shadow-sm animate-fade-up animate-delay-1"
+              >
+                <h3 class="text-sm font-semibold text-slate-500">رقم الهاتف</h3>
+                <a href="tel:0912183506" class="mt-2 block font-medium text-teal-800 hover:underline">0912183506</a>
+              </article>
+              <article
+                class="glow-card rounded-2xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-5 text-center shadow-sm animate-fade-up animate-delay-2"
+              >
+                <h3 class="text-sm font-semibold text-slate-500">البريد الإلكتروني</h3>
+                <a href="mailto:info@almada-attaweel.ly" class="mt-2 block break-all font-medium text-teal-800 hover:underline"
+                  >info@almada-attaweel.ly</a
+                >
+              </article>
+            </div>
           </div>
         </div>
       </section>
     </main>
-
-    <script>
-      const carousel = document.getElementById("image-carousel");
-      const slides = carousel.querySelectorAll(".carousel-slide");
-      const nextBtn = document.getElementById("carousel-next");
-      const prevBtn = document.getElementById("carousel-prev");
-      const dotsContainer = document.getElementById("carousel-dots");
-
-      let currentSlide = 0;
-      let autoPlay;
-
-      const renderDots = () => {
-        slides.forEach((_, index) => {
-          const dot = document.createElement("button");
-          dot.type = "button";
-          dot.className =
-            "h-2.5 w-2.5 rounded-full transition " +
-            (index === currentSlide ? "bg-teal-700" : "bg-slate-300 hover:bg-slate-400");
-          dot.setAttribute("aria-label", `الانتقال إلى الصورة ${index + 1}`);
-          dot.addEventListener("click", () => showSlide(index));
-          dotsContainer.appendChild(dot);
-        });
-      };
-
-      const updateDots = () => {
-        const dots = dotsContainer.querySelectorAll("button");
-        dots.forEach((dot, index) => {
-          dot.className =
-            "h-2.5 w-2.5 rounded-full transition " +
-            (index === currentSlide ? "bg-teal-700" : "bg-slate-300 hover:bg-slate-400");
-        });
-      };
-
-      const showSlide = (index) => {
-        slides[currentSlide].classList.remove("active");
-        currentSlide = (index + slides.length) % slides.length;
-        slides[currentSlide].classList.add("active");
-        updateDots();
-      };
-
-      const nextSlide = () => showSlide(currentSlide + 1);
-      const prevSlide = () => showSlide(currentSlide - 1);
-
-      const startAutoPlay = () => {
-        autoPlay = setInterval(nextSlide, 4500);
-      };
-
-      const resetAutoPlay = () => {
-        clearInterval(autoPlay);
-        startAutoPlay();
-      };
-
-      nextBtn.addEventListener("click", () => {
-        nextSlide();
-        resetAutoPlay();
-      });
-
-      prevBtn.addEventListener("click", () => {
-        prevSlide();
-        resetAutoPlay();
-      });
-
-      renderDots();
-      startAutoPlay();
-    </script>
   </body>
 </html>
