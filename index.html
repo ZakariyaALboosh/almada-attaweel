@@ -91,12 +91,13 @@
           </div>
 
           <div class="mt-10 overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 animate-fade-up animate-delay-3">
-            <figure class="relative">
+            <figure class="relative aspect-[4/5] sm:aspect-[5/4]">
               <img
                 src="assets/hero-figure.png"
                 alt="صورة من أعمال شركة المدى الطويل"
-                class="hero-image h-[360px] w-full object-cover"
+                class="hero-image h-full w-full object-cover object-center"
                 loading="lazy"
+                onerror="this.onerror=null;this.src='assets/logo.jpg';"
               />
               <figcaption
                 class="absolute bottom-4 right-4 rounded-xl bg-white/90 px-4 py-2 text-sm font-semibold text-teal-900 shadow-sm backdrop-blur"
@@ -121,21 +122,30 @@
             >
           </div>
 
-          <div class="mt-10 grid gap-4 sm:grid-cols-3">
-            <article class="glow-card rounded-xl border border-slate-200 bg-slate-50 p-4 text-center animate-fade-up">
-              <h2 class="text-sm font-semibold text-slate-500">الموقع</h2>
-              <p class="mt-2 font-medium text-slate-800">الزاوية الغرب (Western Zawia)</p>
-            </article>
-            <article class="glow-card rounded-xl border border-slate-200 bg-slate-50 p-4 text-center animate-fade-up animate-delay-1">
-              <h2 class="text-sm font-semibold text-slate-500">الهاتف</h2>
-              <a href="tel:0912183506" class="mt-2 block font-medium text-teal-800 hover:underline">0912183506</a>
-            </article>
-            <article class="glow-card rounded-xl border border-slate-200 bg-slate-50 p-4 text-center animate-fade-up animate-delay-2">
-              <h2 class="text-sm font-semibold text-slate-500">البريد الإلكتروني</h2>
-              <a href="mailto:info@almada-attaweel.ly" class="mt-2 block break-all font-medium text-teal-800 hover:underline"
-                >info@almada-attaweel.ly</a
+          <div class="mt-12 border-t border-slate-200 pt-8">
+            <h2 class="text-center text-lg font-bold text-teal-900 animate-fade-up">معلومات التواصل</h2>
+            <div class="mt-5 grid gap-4 sm:grid-cols-3">
+              <article
+                class="glow-card rounded-2xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-5 text-center shadow-sm animate-fade-up"
               >
-            </article>
+                <h3 class="text-sm font-semibold text-slate-500">العنوان</h3>
+                <p class="mt-2 font-medium text-slate-800">الزاوية الغرب .</p>
+              </article>
+              <article
+                class="glow-card rounded-2xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-5 text-center shadow-sm animate-fade-up animate-delay-1"
+              >
+                <h3 class="text-sm font-semibold text-slate-500">رقم الهاتف</h3>
+                <a href="tel:0912183506" class="mt-2 block font-medium text-teal-800 hover:underline">0912183506</a>
+              </article>
+              <article
+                class="glow-card rounded-2xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-5 text-center shadow-sm animate-fade-up animate-delay-2"
+              >
+                <h3 class="text-sm font-semibold text-slate-500">البريد الإلكتروني</h3>
+                <a href="mailto:info@almada-attaweel.ly" class="mt-2 block break-all font-medium text-teal-800 hover:underline"
+                  >info@almada-attaweel.ly</a
+                >
+              </article>
+            </div>
           </div>
         </div>
       </section>
