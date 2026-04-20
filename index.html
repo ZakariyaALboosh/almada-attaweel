@@ -13,6 +13,14 @@
       body {
         font-family: "Tajawal", "Cairo", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       }
+
+      .carousel-slide {
+        display: none;
+      }
+
+      .carousel-slide.active {
+        display: block;
+      }
     </style>
   </head>
   <body class="bg-slate-50 text-slate-800">
@@ -20,11 +28,7 @@
       <section class="mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center px-4 py-12 sm:px-6 lg:px-8">
         <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200 sm:p-10">
           <div class="mx-auto mb-8 w-full max-w-sm text-center">
-            <img
-              src="assets/logo.jpg"
-              class="mx-auto mb-4 h-auto w-full max-w-[260px]"
-              loading="lazy"
-            />
+            <img src="assets/logo.jpg" class="mx-auto mb-4 h-auto w-full max-w-[260px]" loading="lazy" />
             <p class="text-sm text-slate-500">Almada Attaweel</p>
           </div>
 
@@ -39,12 +43,51 @@
             </p>
           </div>
 
+          <div class="mt-10 overflow-hidden rounded-2xl border border-slate-200 bg-slate-100">
+            <div class="relative" id="image-carousel">
+              <!-- You can replace these images with your own images anytime -->
+              <div class="carousel-slide active">
+                <img src="assets/logo.jpg" alt="صورة من أعمال الشركة 1" class="h-[360px] w-full object-cover" loading="lazy" />
+              </div>
+              <div class="carousel-slide">
+                <img src="assets/logo.jpg" alt="صورة من أعمال الشركة 2" class="h-[360px] w-full object-cover" loading="lazy" />
+              </div>
+              <div class="carousel-slide">
+                <img src="assets/logo.jpg" alt="صورة من أعمال الشركة 3" class="h-[360px] w-full object-cover" loading="lazy" />
+              </div>
 
-          <div class="mt-8 text-center">
+              <button
+                type="button"
+                id="carousel-next"
+                class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 px-3 py-2 text-white transition hover:bg-black/60"
+                aria-label="الصورة التالية"
+              >
+                ❮
+              </button>
+              <button
+                type="button"
+                id="carousel-prev"
+                class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 px-3 py-2 text-white transition hover:bg-black/60"
+                aria-label="الصورة السابقة"
+              >
+                ❯
+              </button>
+            </div>
+            <div class="flex items-center justify-center gap-2 bg-white py-3" id="carousel-dots"></div>
+          </div>
+
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-3 text-center">
             <a
               href="contact.html"
               class="inline-flex items-center justify-center rounded-xl bg-teal-700 px-6 py-3 text-base font-semibold text-white transition hover:bg-teal-800"
               >تواصل معنا</a
+            >
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center rounded-xl border border-blue-600 bg-blue-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-blue-700"
+              >تابعنا على فيسبوك</a
             >
           </div>
 
@@ -67,5 +110,70 @@
         </div>
       </section>
     </main>
+
+    <script>
+      const carousel = document.getElementById("image-carousel");
+      const slides = carousel.querySelectorAll(".carousel-slide");
+      const nextBtn = document.getElementById("carousel-next");
+      const prevBtn = document.getElementById("carousel-prev");
+      const dotsContainer = document.getElementById("carousel-dots");
+
+      let currentSlide = 0;
+      let autoPlay;
+
+      const renderDots = () => {
+        slides.forEach((_, index) => {
+          const dot = document.createElement("button");
+          dot.type = "button";
+          dot.className =
+            "h-2.5 w-2.5 rounded-full transition " +
+            (index === currentSlide ? "bg-teal-700" : "bg-slate-300 hover:bg-slate-400");
+          dot.setAttribute("aria-label", `الانتقال إلى الصورة ${index + 1}`);
+          dot.addEventListener("click", () => showSlide(index));
+          dotsContainer.appendChild(dot);
+        });
+      };
+
+      const updateDots = () => {
+        const dots = dotsContainer.querySelectorAll("button");
+        dots.forEach((dot, index) => {
+          dot.className =
+            "h-2.5 w-2.5 rounded-full transition " +
+            (index === currentSlide ? "bg-teal-700" : "bg-slate-300 hover:bg-slate-400");
+        });
+      };
+
+      const showSlide = (index) => {
+        slides[currentSlide].classList.remove("active");
+        currentSlide = (index + slides.length) % slides.length;
+        slides[currentSlide].classList.add("active");
+        updateDots();
+      };
+
+      const nextSlide = () => showSlide(currentSlide + 1);
+      const prevSlide = () => showSlide(currentSlide - 1);
+
+      const startAutoPlay = () => {
+        autoPlay = setInterval(nextSlide, 4500);
+      };
+
+      const resetAutoPlay = () => {
+        clearInterval(autoPlay);
+        startAutoPlay();
+      };
+
+      nextBtn.addEventListener("click", () => {
+        nextSlide();
+        resetAutoPlay();
+      });
+
+      prevBtn.addEventListener("click", () => {
+        prevSlide();
+        resetAutoPlay();
+      });
+
+      renderDots();
+      startAutoPlay();
+    </script>
   </body>
 </html>
