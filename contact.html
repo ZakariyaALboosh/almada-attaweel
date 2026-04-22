@@ -10,12 +10,38 @@
       body {
         font-family: "Tajawal", "Cairo", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       }
+
+      .frame-shell {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .frame-shell::before,
+      .frame-shell::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      .frame-shell::before {
+        border: 1px solid rgba(255, 255, 255, 0.78);
+        border-radius: 1.15rem;
+      }
+
+      .frame-shell::after {
+        inset: 10px;
+        border: 1px solid rgba(14, 116, 144, 0.16);
+        border-radius: 0.9rem;
+      }
     </style>
   </head>
-  <body class="bg-slate-50 text-slate-800">
+  <body class="bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 text-slate-800">
     <main class="min-h-screen">
       <section class="mx-auto flex min-h-screen w-full max-w-3xl items-center px-4 py-12 sm:px-6 lg:px-8">
-        <div class="w-full rounded-2xl bg-white p-6 text-center shadow-sm ring-1 ring-slate-200 sm:p-10">
+        <div
+          class="frame-shell w-full rounded-2xl border border-slate-200/80 bg-white/90 p-6 text-center shadow-[0_18px_60px_-30px_rgba(15,23,42,0.5)] ring-1 ring-slate-100 backdrop-blur-sm sm:p-10"
+        >
           <h1 class="text-3xl font-bold text-teal-900 sm:text-4xl">تواصل معنا</h1>
           <p class="mx-auto mt-4 max-w-xl text-base leading-8 text-slate-600 sm:text-lg">
             نحن جاهزون للرد على استفساراتكم. يمكنكم التواصل معنا مباشرة عبر البريد الإلكتروني الرسمي للشركة.
@@ -24,14 +50,14 @@
           <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
             <a
               href="mailto:info@almada-attaweel.ly"
-              class="inline-flex items-center justify-center rounded-xl bg-teal-700 px-6 py-3 text-base font-semibold text-white transition hover:bg-teal-800"
+              class="inline-flex items-center justify-center rounded-xl border border-teal-800/10 bg-gradient-to-b from-teal-700 to-teal-800 px-6 py-3 text-base font-semibold text-white shadow-md shadow-teal-900/20 transition hover:-translate-y-0.5 hover:from-teal-800 hover:to-teal-900"
               >راسلنا عبر البريد: info@almada-attaweel.ly</a
             >
             <a
               href="https://www.facebook.com/profile.php?id=61579195331753"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center justify-center rounded-xl border border-blue-600 bg-blue-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-blue-700"
+              class="inline-flex items-center justify-center rounded-xl border border-blue-700/30 bg-gradient-to-b from-blue-600 to-blue-700 px-6 py-3 text-base font-semibold text-white shadow-md shadow-blue-900/20 transition hover:-translate-y-0.5 hover:from-blue-700 hover:to-blue-800"
               >صفحتنا على فيسبوك</a
             >
           </div>
@@ -39,6 +65,10 @@
           <div class="mt-6">
             <a href="index.html" class="text-sm font-medium text-teal-800 hover:underline">العودة إلى الصفحة الرئيسية</a>
           </div>
+
+          <footer class="mt-10 border-t border-slate-200 pt-5 text-sm text-slate-500">
+            © 2026 Almada Attaweel. جميع الحقوق محفوظة.
+          </footer>
         </div>
       </section>
     </main>
